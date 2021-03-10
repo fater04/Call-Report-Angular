@@ -1,0 +1,105 @@
+<app-top></app-top>
+<div id="layoutSidenav">
+  <app-sidebar></app-sidebar>
+  <div id="layoutSidenav_content">
+    <main>
+      <div class="container-fluid mt-3">
+        <ol class="breadcrumb mb-4">
+          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item ">Call</li>
+        </ol>
+        <br/><br/>
+
+        <div class="card">
+          <div class="card-header">
+            ADD CALL
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+              <div class="row">
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Nom</label>
+                    <div class="position-relative">
+                      <i data-feather="user" class="fea icon-sm icons"></i>
+                      <input name="nom" type="text" class="form-control pl-5" ngModel>
+                    </div>
+                  </div>
+                </div> <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Prenom</label>
+                    <div class="position-relative">
+                      <i data-feather="user" class="fea icon-sm icons"></i>
+                      <input name="prenom" type="text" class="form-control pl-5" ngModel>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Telephone</label>
+                    <div class="position-relative">
+                      <i data-feather="user" class="fea icon-sm icons"></i>
+                      <input name="telephone" type="text" class="form-control pl-5" ngModel>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Identite</label>
+                    <div class="position-relative">
+                      <i data-feather="user" class="fea icon-sm icons"></i>
+                      <input name="identite" type="text" class="form-control pl-5" ngModel>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Institution</label>
+                    <div class="position-relative">
+                      <i data-feather="user" class="fea icon-sm icons"></i>
+                      <input name="institution" type="text" class="form-control pl-5" ngModel>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea4">Question</label>
+                <textarea class="form-control"  id="exampleFormControlTextarea6"  name="question" rows="2" ngModel></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea5">Action</label>
+                <textarea class="form-control"  id="exampleFormControlTextarea5"  name="action" rows="2" ngModel></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea4">Remarque</label>
+                <textarea class="form-control"  id="exampleFormControlTextarea4"  name="remarque" rows="2" ngModel></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea3">Suivi</label>
+                <textarea class="form-control"  id="exampleFormControlTextarea3"  name="suivi" rows="2" ngModel></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea2">Suggestion</label>
+                <textarea class="form-control" id="exampleFormControlTextarea2" name="suggestion" rows="2" ngModel></textarea>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <input [disabled]="f.invalid" type="submit" id="submit" name="send" class="btn btn-primary"
+                         value="ADD">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </main>
+    <app-footer></app-footer>
+  </div>
+</div>

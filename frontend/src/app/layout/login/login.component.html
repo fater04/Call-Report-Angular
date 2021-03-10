@@ -1,0 +1,50 @@
+<div class="bg-dark">
+  <div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+      <main>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-5">
+              <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">CONNEXION</h3></div>
+                <div class="card-body">
+                  <form  name="formConnecte" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+                         novalidate>
+                    <div class="form-group">
+                      <label class="small mb-1" for="inputEmailAddress">Username</label>
+                      <input class="form-control py-4" id="inputEmailAddress" name="username"
+                             [(ngModel)]="formConnecte.username" required #username="ngModel"/>
+                      <div class="alert alert-danger mt-1" role="alert" *ngIf="username.errors && f.submitted">
+                        Username is required !
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="small mb-1" for="inputPassword">Password</label>
+                      <input class="form-control py-4" id="inputPassword" type="password" placeholder="Password" name="password"
+                             [(ngModel)]="formConnecte.password" required minlength="6" #password="ngModel"/>
+                      <div class="alert alert-danger mt-1" role="alert " *ngIf="password.errors && f.submitted">
+                        <div *ngIf="password.errors.required">Password is required !</div>
+                        <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox"/>
+                        <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
+                      </div>
+                    </div>
+                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                      <a class="small text-dark" href="#">Forgot Password?</a>
+                      <button type="submit" class="btn btn-dark">Login</button>
+
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<app-top></app-top>
+<div id="layoutSidenav">
+  <app-sidebar></app-sidebar>
+  <div id="layoutSidenav_content">
+    <main>
+      <div class="container-fluid mt-3">
+        <ol class="breadcrumb mb-4">
+          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item ">User</li>
+        </ol>
+        <br/><br/>
+
+
+        <h1>List of user</h1>
+        <button class="btn btn-sm font-weight-bold btn-link" (click)="exportToExcel()">
+          <i class="fa fa-external-link"></i>
+          Export to Excel
+        </button>
+            <div class="table-responsive mt-4">
+              <table class="table table-condensed table-bordered table-hover">
+                <thead class="bg-dark text-white">
+                <th scope="col">ID</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Role</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Updated_At</th>
+                <th scope="col">OPTION</th>
+                </thead>
+
+                <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{user.id}}</td>
+                  <td>{{user.nomcomplet}}</td>
+                  <td>{{user.pseudo}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.phone}}</td>
+                  <td>{{user.role}}</td>
+                  <td>{{user.statut }}</td>
+                  <td>{{user.updatedAt | date :'short' }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-icon btn-outline-secondary mr-1" routerLink={{user.id}}>
+                      <i class="fa fa-edit  text-success mdi-18px" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-sm btn-icon btn-outline-secondary mr-1" (click)="delete(user.id)">
+                      <i class="fa fa-trash  text-danger mdi-18px" aria-hidden="true"></i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+
+      </div>
+    </main>
+    <app-footer></app-footer>
+  </div>
+</div>
