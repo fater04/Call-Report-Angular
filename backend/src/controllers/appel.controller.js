@@ -1,5 +1,6 @@
 const db = require("../models/sequelize");
 const Appel = db.appel;
+const User = db.user;
 const appelController = {};
 
 
@@ -8,6 +9,22 @@ appelController.findAll = async (req, res) => {
     await Appel.findAll({
         attributes: {exclude: ['UserId']},
         where: {userId: id},
+    }).then(data => {
+        res.status(200).send(data);
+    }).catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred while retrieving Appel."
+        });
+    });
+};
+
+appelController.findAllAdmin = async (req, res) => {
+    await Appel.findAll({
+        include: [{
+            model: User,
+            attributes: ['pseudo', 'nomcomplet']
+        }]
     }).then(data => {
         res.status(200).send(data);
     }).catch(err => {

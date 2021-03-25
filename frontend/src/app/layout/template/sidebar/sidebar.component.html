@@ -25,7 +25,7 @@
         </a>
         <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
           <nav class="sb-sidenav-menu-nested nav">
-            <a class="nav-link" routerLink="/ADD_USER"> ADD</a>
+            <a class="nav-link" routerLink="/ADD_USER"  *ngIf="Utilisateur['role']=='admin'"> ADD</a>
             <a class="nav-link" routerLink="/USERS">LIST</a>
           </nav>
         </div>

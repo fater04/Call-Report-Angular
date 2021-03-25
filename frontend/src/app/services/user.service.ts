@@ -3,10 +3,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Utilisateur} from '../models/utilisateur.model';
 import {Observable} from 'rxjs';
 
-const AUTH_API = 'http://localhost:5000/api/v1/user/auth/';
-const baseUrl = 'http://localhost:5000/api/v1/user';
-// const AUTH_API = 'http://report.rgrgroup.net/api/v1/user/auth/';
-// const baseUrl = 'http://report.rgrgroup.net/api/v1/user';
+// const AUTH_API = 'http://localhost:5000/api/v1/user/auth/';
+// const baseUrl = 'http://localhost:5000/api/v1/user';
+const AUTH_API = 'http://report.rgrgroup.net/api/v1/user/auth/';
+const baseUrl = 'http://report.rgrgroup.net/api/v1/user';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})

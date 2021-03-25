@@ -15,7 +15,7 @@
           <i class="fa fa-external-link"></i>
           Export to Excel
         </button>
-        <div class="table-responsive mt-4">
+        <div class="table-responsive mt-4" *ngIf="Utilisateur['role']=='user'">
           <table class="table table-condensed table-bordered table-hover"  width="100%" cellspacing="0" >
             <thead class="bg-dark text-white">
             <th>ID</th>
@@ -50,6 +50,42 @@
           </table>
         </div>
 
+        <div class="table-responsive mt-4" *ngIf="Utilisateur['role']=='admin'">
+          <table class="table table-condensed table-bordered table-hover"  width="100%" cellspacing="0" >
+            <thead class="bg-dark text-white">
+            <th>ID</th>
+            <th>Telephone</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Institution</th>
+            <th>Identite</th>
+            <th>Utilisateur</th>
+            <th>Date</th>
+            <th>OPTION</th>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let appel of appels">
+              <td>{{appel.id}}</td>
+              <td>{{appel.telephone}}</td>
+              <td>{{appel.nom}}</td>
+              <td>{{appel.prenom}}</td>
+              <td>{{appel.institution}}</td>
+              <td>{{appel.identite}}</td>
+              <td>{{appel.User['nomcomplet']}}({{appel.User['pseudo']}})</td>
+              <td>{{appel.createdAt | date :'short' }}</td>
+              <td>
+                <button class="btn btn-sm btn-icon btn-outline-secondary mr-1" routerLink={{appel.id}}>
+                  <i class="fa fa-edit  text-success mdi-18px" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-sm btn-icon btn-outline-secondary mr-1" (click)="delete(appel.id)">
+                  <i class="fa fa-trash  text-danger mdi-18px" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
 
       </div>
     </main>

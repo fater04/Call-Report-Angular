@@ -44,7 +44,7 @@
                     <button class="btn btn-sm btn-icon btn-outline-secondary mr-1" routerLink={{user.id}}>
                       <i class="fa fa-edit  text-success mdi-18px" aria-hidden="true"></i>
                     </button>
-                    <button class="btn btn-sm btn-icon btn-outline-secondary mr-1" (click)="delete(user.id)">
+                    <button class="btn btn-sm btn-icon btn-outline-secondary mr-1" (click)="delete(user.id)" *ngIf="Utilisateur['role']=='admin'">
                       <i class="fa fa-trash  text-danger mdi-18px" aria-hidden="true"></i>
                     </button>
                   </td>

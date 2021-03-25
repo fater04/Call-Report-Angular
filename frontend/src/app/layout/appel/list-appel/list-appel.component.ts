@@ -27,8 +27,15 @@ appels?: Appel[];
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.Utilisateur = this.tokenStorage.getUser();
+
       // @ts-ignore
+      if (this.Utilisateur.role === 'user'){
+        // @ts-ignore
       this.getAppels(this.Utilisateur.id);
+      }else{
+        this.getAppelAdmin();
+      }
+
     }else{
       this.router.navigate(['/Connexion']);
     }
@@ -81,6 +88,18 @@ appels?: Appel[];
           this.message.error(error, 'Error');
         });
   }
+  getAppelAdmin(): void {
+    this.appelService.getAllAdmin()
+      .subscribe(
+        (data) => {
+
+          this.appels = data;
+        },
+        (error) => {
+          this.message.error(error, 'Error');
+        });
+  }
+
   delete(id: number): void {
     this.appelService.delete(id)
       .subscribe(

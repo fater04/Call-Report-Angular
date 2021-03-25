@@ -4,6 +4,8 @@ import {ToastrService} from 'ngx-toastr';
 import {UserService} from '../../../services/user.service';
 import {ExcelJson, ExportService} from '../../../services/export.service';
 import { DatePipe } from '@angular/common';
+import {TokenStorageService} from '../../../services/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-user',
@@ -13,10 +15,13 @@ import { DatePipe } from '@angular/common';
 export class ListUserComponent implements OnInit {
   public data = this.getUsers();
   users?: Utilisateur[];
+  Utilisateur = Utilisateur;
 
 constructor(public datepipe: DatePipe,
             private exportService: ExportService,
             private userService: UserService,
+            private router: Router,
+            private tokenStorage: TokenStorageService,
             private message: ToastrService) {
   }
   exportToExcel(): void {
@@ -46,6 +51,11 @@ constructor(public datepipe: DatePipe,
   }
 
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.Utilisateur = this.tokenStorage.getUser();
+    }else{
+      this.router.navigate(['/Connexion']);
+    }
     this.getUsers();
   }
 
